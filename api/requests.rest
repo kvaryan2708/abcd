@@ -1,0 +1,20 @@
+GET http://localhost:3001/profile
+###
+
+POST http://localhost:3001/msg/new 
+Content-Type: application/json
+
+{
+    
+    "name":"aryanji1289",
+    "by":"aryanji420",
+    "message": "Pick"
+}
+
+###
+
+DELETE http://localhost:3001/todo/delete/6584756311caae0734b501e5
+
+###
+
+PUT http://localhost:3001/todo/complete/65843cbe59c96bc227e44ae1
