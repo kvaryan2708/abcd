@@ -1,0 +1,256 @@
+:root {
+	--primary: #D81E5B;
+	--secondary: #8A4EFC;
+	--light: #EEE;
+	--light-alt: #61759b;
+	--dark: #131A26;
+	--dark-alt: #202B3E;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	font-family: "Fira Sans", sans-serif;
+}
+
+body {
+	background-color:#023802;
+	/* background-image: url('C:\Users\aryan\OneDrive\Pictures\553439.jpg'); */
+	background-size: cover;
+	color: var(--light);
+}
+.image-container {
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	max-width: 200px; /* Adjust this value based on your desired maximum width */
+	max-height: 200px; /* Adjust this value based on your desired maximum height */
+	overflow: hidden; /* Hide any overflow beyond the specified dimensions */
+	align-items: center;
+  }
+  
+  .user-image {
+	width: 100%; /* Ensure that the image takes up 100% of the container width */
+	height: auto; /* Maintain the image's aspect ratio */
+	
+	align-items: center;
+  }
+  .image-containernew {
+	display: flex;
+	justify-content: center;
+	max-width: 70px; /* Adjust this value based on your desired maximum width */
+	max-height: 700px; /* Adjust this value based on your desired maximum height */
+	overflow: hidden; /* Hide any overflow beyond the specified dimensions */
+	align-items: center;
+	border-radius: 50%;
+  }
+  
+  .user-imagenew {
+	width: 100%; /* Ensure that the image takes up 100% of the container width */
+	height: auto; /* Maintain the image's aspect ratio */
+	
+	align-items: center;
+  }
+.App {
+	padding: 32px;
+	
+}
+
+h1 {
+	font-size: 40px;
+	font-weight: 700;
+	margin-bottom: 32px;
+}
+
+h4 {
+	font-size: 18px;
+	color: var(--light-alt);
+	text-transform: uppercase;
+	font-weight: 400;
+	margin-bottom: 16px;
+}
+
+.todo {
+	position: relative;
+	background-color: var(--dark);
+	padding: 16px;
+	border-radius: 16px;
+	 width:40%;
+	display: flex;
+	align-items: center;
+	transition: 0.5s;
+	cursor: pointer;
+	margin-bottom: 16px;
+	
+}
+
+.todo:hover {
+	opacity: 0.8;
+}
+
+.button:hover {
+	opacity: 0.8;
+}
+.todo .checkbox {
+	width: 20px;
+	height: 20px;
+	margin-right: 16px;
+	border-radius: 50%;
+	background-color: var(--dark-alt);
+	background-image: linear-gradient(to bottom, transparent, transparent);
+	transition: 0.4s;
+}
+
+.todo.is-complete .checkbox {
+	background-color: var(--primary);
+	background-image: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.todo .text {
+	font-size: 20px;
+	word-wrap: break-word;
+	line-break: anywhere;
+}
+
+.todo.is-complete .text {
+	text-decoration: line-through;
+}
+
+.todo .delete-todo {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 16px;
+	color: var(--light);
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background-color: #AF1E2D;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+}
+
+.addPopup {
+	position: fixed;
+	bottom: 32px;
+	right: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 64px;
+	height: 64px;
+	border-radius: 999px;
+	font-size: 28px;
+	font-weight: 900;
+	color: var(--light);
+	background-color: var(--primary);
+	background-image: linear-gradient(to bottom right, var(--primary), var(--secondary));
+	cursor: pointer;
+}
+.name{
+	
+	position:fixed;
+	z-index: 5;
+	top: 32px;
+	right: 32px;
+    text-shadow: #AF1E2D;
+	background-color: rgba(231, 13, 13, 0.399);
+	display: inline-block;
+	font-weight: 700;
+	font-size: 18px;
+	margin-top: 16px;
+	text-align: center;
+	cursor: pointer;
+}
+.content{
+	position:relative;
+}
+
+.popup {
+	position: fixed;
+	top: 70%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	width: 100%;
+	max-width: 400px;
+	background-color: rgb(0, 166, 255);
+	padding: 32px;
+	border-radius: 16px;
+	box-shadow: 0px 4px 32px var(--dark);
+}
+.emp {
+	font-size: 40px;
+	position :fixed;
+	top: 60%;
+	left: 35%;
+	font-style: italic;
+	
+}
+
+.closePopup {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	width: 20px;
+	height: 20px;
+	font-size: 20px;
+	color: var(--dark);
+	cursor: pointer;
+}
+
+.popup h3 {
+	color: var(--dark);
+	margin-bottom: 16px;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.add-todo-input {
+	appearance: none;
+	outline: none;
+	border: none;
+	background-color: #FFF;
+	padding: 16px;
+	border-radius: 16px;
+	width: 100%;
+	box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.2);
+	font-size: 20px;
+}
+
+.button {
+	padding: 16px 32px;
+	border-radius: 999px;
+	background-image: linear-gradient(to right, var(--primary), var(--secondary));
+	display: inline-block;
+	font-weight: 700;
+	color:#FFF;
+    text-decoration: none;
+	text-transform: uppercase;
+	font-size: 18px;
+	margin-top: 16px;
+	text-align: center;
+	cursor: pointer;
+}
+.buttone {
+	position: fixed;
+	top: 32px;
+	right: 32px;
+	padding: 16px 32px;
+	border-radius: 999px;
+	background-image: linear-gradient(to right, var(--primary), var(--secondary));
+	display: inline-block;
+	font-weight: 700;
+
+	text-transform: uppercase;
+	font-size: 18px;
+	margin-top: 16px;
+
+	text-align: center;
+	cursor: pointer;
+}
