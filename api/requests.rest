@@ -1,4 +1,4 @@
-GET http://localhost:3001/profile
+GET http://localhost:3001/getImage/aryanji1289
 ###
 
 POST http://localhost:3001/msg/new 

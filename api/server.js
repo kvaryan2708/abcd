@@ -195,9 +195,9 @@ app.post('/profile/new', upload.single('image'), async(req,res) => {
 	 msg.save();
  
 	 
-
+	 const token = jwt.sign({ userId: pass._id }, 'abcd', { expiresIn: '1h' });
 	 res.setHeader('Content-Type', 'application/json');
-		res.json({message:"Account Created",image:pass.image });
+		res.json({message:"Account Created",image:pass.image,token });
 	  
 	} catch (error) {
 	  console.error(error);
