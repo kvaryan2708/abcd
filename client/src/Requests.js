@@ -2,20 +2,24 @@ import {useState,useEffect} from 'react'
 const api_base="http://localhost:3001"
 function Requests({byValue}) {
     const [msgArr,setMsgArr]=useState([]);
+    const [loading,setLoading]=useState(true);
    
     useEffect(() =>{
         GetMsg();
           
       },[])
     
-      const GetMsg=() => {
-    
-         fetch(`${api_base}/viewReq/${byValue}`)
-       
-                .then(res => res.json())
-                .then(data => setMsgArr(data))
-                .catch((err) => console.error("Error: ", err));
-      } 
+      const GetMsg = async () => {
+        try {
+          const response = await fetch(`${api_base}/viewReq/${byValue}`);
+          const data = await response.json();
+          setMsgArr(data);
+        } catch (err) {
+          console.error("Error: ", err);
+        } finally {
+          setLoading(false); // Move setLoading(false) to finally block
+        }
+      };
       const accReq = async (id) => {
         try {
           await fetch(api_base + "/accept/" + id, {
@@ -54,7 +58,8 @@ function Requests({byValue}) {
 	
     return(
      <div className="todos">
-      {msgArr.length > 0 ?(
+      {loading ? (''):
+      msgArr.length > 0 ?(
         msgArr.map(msg => (
         <div className="todo " key={msg._id}>
        

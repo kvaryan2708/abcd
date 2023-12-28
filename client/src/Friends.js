@@ -5,17 +5,25 @@ function Friends({ byValue }) {
   const [re, setRe] = useState("");
   const [messagee, setMessagee] = useState("");
   const [popup, setPopup] = useState(false);
+  const [loading,setLoading]=useState(true);
 
 
   useEffect(() => {
+    setLoading(true);
     GetMsg();
+    
   }, [byValue]);
 
-  const GetMsg = () => {
-    fetch(`${api_base}/friends/${byValue}`)
-      .then((res) => res.json())
-      .then((data) => setMsgArr(data))
-      .catch((err) => console.error("Error: ", err));
+  const GetMsg = async () => {
+    try {
+      const response = await fetch(`${api_base}/friends/${byValue}`);
+      const data = await response.json();
+      setMsgArr(data);
+    } catch (err) {
+      console.error("Error: ", err);
+    } finally {
+      setLoading(false); // Move setLoading(false) to finally block
+    }
   };
 
   const addMsg = async () => {
@@ -30,7 +38,7 @@ function Friends({ byValue }) {
         message: messagee,
       }),
     }).then((res) => res.json());
-
+    
     setMessagee("");
     setPopup(false);
   };
@@ -66,7 +74,8 @@ function Friends({ byValue }) {
   }, [msgArr]);
     return(
      <div className="todos">
-    {msgArr.length > 0 ? (
+     {loading ? (''):
+    msgArr.length > 0 ? (
         msgArr.map(msg => (
         <div className="todo " >
          
